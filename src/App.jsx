@@ -7,7 +7,9 @@ const schedule = {
 };
 
 const App = () => (
-  <h1>{schedule.title}</h1>
+  <div>
+    <h1>{schedule.title}</h1>
+  </div>
 );
 
 export default App;
