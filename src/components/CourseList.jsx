@@ -1,11 +1,12 @@
-import React from "react";
+import Course from "./Course"
+import './CourseList.css'
 
 const CourseList = (schedule) => {
     const courses = schedule.courses;
     return (
-        <div>
+        <div className="course-list">
         {Object.keys(courses).map((key) => (
-            <p key={key}> {courses[key].term} CS {courses[key].number}: {courses[key].title} </p>
+            <Course key={key} course={courses[key]}/>
         ))}
         </div>
     );
