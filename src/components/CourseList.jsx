@@ -7,7 +7,7 @@ const CourseList = (props) => {
     return (
         <div className="course-list">
             {selectedCourses.map((key) => (
-                <Course key={key} course={courses[key]}/>
+                <Course id={key} course={courses[key]} selected={props.selected} toggleSelected={props.toggleSelected}/>
             ))}
         </div>
     );

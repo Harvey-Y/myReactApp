@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Banner from './Banner';
 import CourseList from './CourseList';
+import CoursePage from "./CoursePage";
 
 const terms = {
   Fall: 'Fall',
@@ -33,7 +34,7 @@ const TermPage = (props) => {
     <div>
       <Banner title={data.title} />
       <TermSelector selection={selection} setSelection={setSelection} />
-      <CourseList courses={data.courses} selectedTerm={selection} />
+      <CoursePage courses={data.courses} selectedTerm={selection} />
     </div>
   );
 }
