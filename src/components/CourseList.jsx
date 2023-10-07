@@ -1,13 +1,14 @@
 import Course from "./Course"
 import './CourseList.css'
 
-const CourseList = (schedule) => {
-    const courses = schedule.courses;
+const CourseList = (props) => {
+    const courses = props.courses;
+    const selectedCourses = Object.keys(courses).filter((key) => courses[key].term === props.selectedTerm);
     return (
         <div className="course-list">
-        {Object.keys(courses).map((key) => (
-            <Course key={key} course={courses[key]}/>
-        ))}
+            {selectedCourses.map((key) => (
+                <Course key={key} course={courses[key]}/>
+            ))}
         </div>
     );
 };

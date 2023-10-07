@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Banner = (schedule) => {
+const Banner = (props) => {
   return (
-    <h1>{schedule.title}</h1>
+    <div className='banner' style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+      <h1>{props.title}</h1>
+    </div>
   )
-}
+};
 
 export default Banner
