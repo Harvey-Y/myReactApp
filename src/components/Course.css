@@ -1,3 +1,9 @@
+
+.conflict {
+    background-color:rgb(142, 142, 142);
+    color: rgb(92, 92, 92);
+}
+
 .selected {
     background-color:lemonchiffon;
     color: green;

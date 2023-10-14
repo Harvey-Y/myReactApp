@@ -1,5 +1,6 @@
 import Course from "./Course"
 import './CourseList.css'
+import { conflicts } from "../utilities/timeConflict";
 
 const CourseList = (props) => {
     const courses = props.courses;
@@ -7,7 +8,7 @@ const CourseList = (props) => {
     return (
         <div className="course-list">
             {selectedCourses.map((key) => (
-                <Course id={key} course={courses[key]} selected={props.selected} toggleSelected={props.toggleSelected}/>
+                <Course id={key} course={courses[key]} selected={props.selected} toggleSelected={props.toggleSelected} conflicting={props.selected.filter(id => conflicts(courses[id], courses[key])).length > 0}/>
             ))}
         </div>
     );
