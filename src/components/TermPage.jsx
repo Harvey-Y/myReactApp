@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Banner from './Banner';
+import Modal from './Modal';
+import Cart from "./Cart";
 import CourseList from './CourseList';
-import CoursePage from "./CoursePage";
 
 const terms = {
   Fall: 'Fall',
@@ -29,12 +30,30 @@ const TermSelector = ({selection, setSelection}) => (
 
 const TermPage = (props) => {
   const data = props.data;
-  const [selection, setSelection] = useState(() => Object.keys(terms)[0]);
+  const [termSelection, setTerm] = useState(() => Object.keys(terms)[0]);
+  const [selectedClass, setClass] = useState([]);
+  const [open, setOpen] = useState(false);
+
+  const toggleSelected = (item) => setClass(
+    selectedClass.includes(item)
+    ? selectedClass.filter(x => x !== item)
+    : [...selectedClass, item]
+  );
+
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
+
   return (
     <div>
       <Banner title={data.title} />
-      <TermSelector selection={selection} setSelection={setSelection} />
-      <CoursePage courses={data.courses} selectedTerm={selection} />
+      <div>
+        <TermSelector selection={termSelection} setSelection={setTerm} />
+        <button className="ms-auto btn btn-outline-dark" onClick={openModal}><i className="bi bi-cart4"></i>Course Plan</button>
+      </div>
+      <Modal open={open} close={closeModal}>
+          <Cart selected={selectedClass} courses={data.courses}/>
+      </Modal>
+      <CourseList courses={data.courses} selectedTerm = {termSelection} selected={selectedClass} toggleSelected={toggleSelected} />
     </div>
   );
 }
