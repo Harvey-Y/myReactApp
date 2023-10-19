@@ -6,6 +6,7 @@ import { useJsonQuery } from './utilities/fetch';
 import Banner from './components/Banner';
 import CourseList from './components/CourseList';
 import TermPage from './components/TermPage';
+import Dispatcher from './components/Dispatcher';
 // import TermPage from './components/TermPage';
 
 const Main = () => {
@@ -17,7 +18,7 @@ const Main = () => {
 
   return (
     <div className="container">
-      <TermPage data={data}></TermPage>
+      <Dispatcher data={data} />
     </div>
   );
 };

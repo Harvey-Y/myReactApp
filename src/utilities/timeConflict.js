@@ -7,7 +7,7 @@ const dayConflict = (class1, class2) => {
     return days1.filter((day) => days2.includes(day)).length !== 0
 }
 
-const before = (time1, time2) => {
+export const before = (time1, time2) => {
     const [h1, s1] = time1.split(":");
     const [h2, s2] = time2.split(":");
     return h1 < h2 ? true : (h1 === h2 && s1 < s2);
