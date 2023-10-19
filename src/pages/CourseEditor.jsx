@@ -5,7 +5,7 @@ import { before } from '../utilities/timeConflict';
 const validateUserData = (key, val) => {
   switch (key) {
     case 'title':
-      return /(\w\w)/.test(val) ? '' : 'at least two characters';
+      return /(\w\w)/.test(val) ? '' : 'The course title must be at least two characters.';
     case 'meets':
         const meetsRegex = /^$|^(?:M|Tu|W|Th|F(?!(?:M|Tu|W|Th|F))+){0,4} ((?:[0-1]?\d|2[0-3]):[0-5]\d)-((?:[0-1]?\d|2[0-3]):[0-5]\d)$/;
         const match = val.match(meetsRegex) 
@@ -17,7 +17,7 @@ const validateUserData = (key, val) => {
             }
             return '';
         } else {
-            return 'please follow the format, e.g., MWF 12:00-13:20';
+            return 'must contain days and start-end, e.g., MWF 12:00-13:20';
         }
     default: return '';
   }
