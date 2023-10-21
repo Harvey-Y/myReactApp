@@ -1,3 +1,4 @@
+// import { useDbUpdate } from '../utilities/firebase';
 import { useFormData } from '../utilities/useFormData';
 import { useNavigate } from "react-router-dom";
 import { before } from '../utilities/timeConflict';
@@ -5,7 +6,7 @@ import { before } from '../utilities/timeConflict';
 const validateUserData = (key, val) => {
   switch (key) {
     case 'title':
-      return /(\w\w)/.test(val) ? '' : 'The course title must be at least two characters.';
+      return /(\w\w)/.test(val) ? '' : 'At least two characters';
     case 'meets':
         const meetsRegex = /^$|^(?:M|Tu|W|Th|F(?!(?:M|Tu|W|Th|F))+){0,4} ((?:[0-1]?\d|2[0-3]):[0-5]\d)-((?:[0-1]?\d|2[0-3]):[0-5]\d)$/;
         const match = val.match(meetsRegex) 
@@ -44,7 +45,14 @@ const ButtonBar = ({message, disabled}) => {
 };
 
 const CourseEditor = ({id}) => {
+//   const [update, result] = useDbUpdate(`/courses/${id}`);
   const [state, change] = useFormData(validateUserData, id);
+//   const submit = (evt) => {
+//     evt.preventDefault();
+//     if (!state.errors) {
+//       update(state.values);
+//     }
+//   };
 
   return (
     <form onSubmit={null} noValidate className={state.errors ? 'was-validated' : null}>
@@ -53,6 +61,7 @@ const CourseEditor = ({id}) => {
         <InputField name="title" text="Course Title" state={state} change={change} />
         <InputField name="meets" text="Meeting Times" state={state} change={change} />
         <ButtonBar />
+        {/* <ButtonBar message={result?.message} /> */}
     </form>
   )
 };
