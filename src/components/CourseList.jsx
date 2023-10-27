@@ -8,7 +8,7 @@ const CourseList = (props) => {
     return (
         <div className="course-list">
             {selectedCourses.map((key) => (
-                <Course id={key} course={courses[key]} selected={props.selected} toggleSelected={props.toggleSelected} conflicting={props.selected.filter(id => conflicts(courses[id], courses[key])).length > 0}/>
+                <Course id={key} course={courses[key]} selected={props.selected} toggleSelected={props.toggleSelected} conflicting={props.selected.filter(id => conflicts(courses[id], courses[key])).length > 0} profile={props.profile} />
             ))}
         </div>
     );

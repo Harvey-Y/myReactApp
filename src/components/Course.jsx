@@ -3,14 +3,11 @@ import { conflicts } from '../utilities/timeConflict';
 import { useAuthState } from '../utilities/firebase';
 import { Link } from 'react-router-dom';
 
-const Course = ({id, course, selected, toggleSelected, conflicting}) => {
-
-    const [user] = useAuthState();
-
+const Course = ({id, course, selected, toggleSelected, conflicting, profile}) => {
     return (
-        <div className="course card m-1 p-2" onClick={() => {if (!conflicting || selectedCards.includes(id)) {toggleSelectedCards(id)}}}>
+        <div className="course card m-1 p-2" onClick={() => {if (!conflicting || selected.includes(id)) {toggleSelected(id)}}}>
             <div className={`card-body ${selected.includes(id) ? 'selected' : ''} ${conflicting ? 'conflict' : ''}`}>
-                {user 
+                {profile?.isAdmin 
                 ? <Link to={`${id}/edit`} className={"position-absolute top-0 end-0"} >
                     <button className="btn">
                         <i className="bi bi-pencil-square text-info"></i>

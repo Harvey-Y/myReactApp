@@ -1,6 +1,6 @@
 {
   "rules": {
-    ".read": "now < 1700460000000",  // 2023-11-20
-    ".write": "now < 1700460000000",  // 2023-11-20
+    ".read": true,
+    ".write": "auth !== null && root.child('admins').child(auth.uid).exists()"
   }
 }

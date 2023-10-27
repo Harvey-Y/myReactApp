@@ -53,7 +53,7 @@ const TermPage = (props) => {
       <Modal open={open} close={closeModal}>
           <Cart selected={selectedClass} courses={data.courses}/>
       </Modal>
-      <CourseList courses={data.courses} selectedTerm = {termSelection} selected={selectedClass} toggleSelected={toggleSelected} />
+      <CourseList courses={data.courses} selectedTerm = {termSelection} selected={selectedClass} toggleSelected={toggleSelected} profile={props.profile} />
     </div>
   );
 }
