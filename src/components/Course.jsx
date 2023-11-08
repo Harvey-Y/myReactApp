@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Course = ({id, course, selected, toggleSelected, conflicting, profile}) => {
     return (
-        <div className="course card m-1 p-2" onClick={() => {if (!conflicting || selected.includes(id)) {toggleSelected(id)}}}>
+        <div className="course card m-1 p-2" data-cy="course" onClick={() => {if (!conflicting || selected.includes(id)) {toggleSelected(id)}}}>
             <div className={`card-body ${selected.includes(id) ? 'selected' : ''} ${conflicting ? 'conflict' : ''}`}>
                 {profile?.isAdmin 
                 ? <Link to={`${id}/edit`} className={"position-absolute top-0 end-0"} >
